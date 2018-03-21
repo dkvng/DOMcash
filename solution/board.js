@@ -14,7 +14,7 @@ class Board {
   }
 
   isOver() {
-    if (this.winner() != null) {
+    if (this.winner() !== null) {
       return true;
     }
 
@@ -30,10 +30,13 @@ class Board {
   }
 
   placeMark(pos, mark) {
+    debugger
     if (!this.isEmptyPos(pos)) {
+
+      debugger
+
       throw new MoveError('Is not an empty position!');
     }
-
     this.grid[pos[0]][pos[1]] = mark;
   }
 
@@ -99,6 +102,8 @@ class Board {
   }
 
   static isValidPos(pos) {
+    debugger
+
     return (0 <= pos[0]) &&
     (pos[0] < 3) &&
     (0 <= pos[1]) &&

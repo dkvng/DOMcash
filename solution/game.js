@@ -15,11 +15,12 @@ class Game {
     this.board.placeMark(pos, this.currentPlayer);
     this.swapTurn();
     console.log(this.currentPlayer);
-
+    debugger
   }
 
   promptMove(reader, callback) {
     const game = this;
+    debugger
 
     this.board.print();
     console.log(`Current Turn: ${this.currentPlayer}`);
