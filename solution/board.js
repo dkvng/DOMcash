@@ -7,9 +7,10 @@ class Board {
 
   isEmptyPos(pos) {
     if (!Board.isValidPos(pos)) {
+      debugger
       throw new MoveError('Is not valid position!');
     }
-
+    debugger
     return (this.grid[pos[0]][pos[1]] === null);
   }
 
@@ -18,8 +19,8 @@ class Board {
       return true;
     }
 
-    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
-      for (let colIdx = 0; colIdx < 3; colIdx++) {
+    for (let rowIdx = 0; rowIdx < 6; rowIdx++) {
+      for (let colIdx = 0; colIdx < 7; colIdx++) {
         if (this.isEmptyPos([rowIdx, colIdx])) {
           return false;
         }
@@ -80,6 +81,37 @@ class Board {
     return null;
   }
 
+
+// until out of bounds do {
+//   if (pos) {
+//
+//   }
+// }
+//
+// const posSeqs = [
+//   // horizontals
+//   [[0, 0], [0, 1], [0, 2], [0, 3]],
+//   // verticals
+//   [[0, 0], [1, 0], [2, 0], [3, 0]],
+//   // diagonals
+//   [[0, 0], [1, 1], [2, 2], [3, 3]],
+//   [[3, 0], [2, 1], [1, 2], [0, 3]]
+// ];
+//
+// for (var i = 0; i < array.length; i++) {
+//   array[i]
+// }
+//
+//
+//
+//   if (board[pos[0]][pos[1]] == board[pos[0] + 1][pos[1] + 1]) {
+//
+//   } else if (board[pos[0]][pos[1]] == board[pos[0] + 1][pos[1]]) {
+//
+//   } else if (board[pos[0]][pos[1]] == board[pos[0] + 1][pos[1]]) {
+//
+//   }
+
   winnerHelper(posSeq) {
     for (let markIdx = 0; markIdx < Board.marks.length; markIdx++) {
       const targetMark = Board.marks[markIdx];
@@ -105,17 +137,17 @@ class Board {
     debugger
 
     return (0 <= pos[0]) &&
-    (pos[0] < 3) &&
+    (pos[0] < 6) &&
     (0 <= pos[1]) &&
-    (pos[1] < 3);
+    (pos[1] < 7);
   }
 
   static makeGrid() {
     const grid = [];
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 6; i++) {
       grid.push([]);
-      for (let j = 0; j < 3; j++) {
+      for (let j = 0; j < 7; j++) {
         grid[i].push(null);
       }
     }
