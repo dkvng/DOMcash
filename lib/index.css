@@ -17,17 +17,46 @@ ul {
   height: 480px;
   border: 5px solid #446CB3;
   padding: 0;
+  margin-top: 50px;
   background-color: #446CB3;
   border-radius: 20px;
+  position: relative;
 }
 
 .square:hover {
-  background-color: white;
+  cursor: pointer;
 }
 
-.square:hover {
+.square > article {
   width: 70px;
   height: 70px;
+  background-color: transparent;
+  position: absolute;
+  z-index: 999;
+  border-radius: 100%;
+  /* display: none; */
+  top: -80px;
+}
+
+.square:hover article {
+  display: flex;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.red {
+  background-color: #F7CA18;
+}
+
+.yellow {
+  background-color: #F03434;
+}
+
+.p1 {
+  background-color: #F03434;
+  width: 102%;
+  height: 102%;
+  border-radius: 100%;
 }
 
 .p2 {
@@ -37,12 +66,6 @@ ul {
   border-radius: 100%;
 }
 
-.p1 {
-  background-color: #F03434;
-  width: 102%;
-  height: 102%;
-  border-radius: 100%;
-}
 
 body {
   color: white;
