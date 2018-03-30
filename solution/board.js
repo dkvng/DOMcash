@@ -7,11 +7,11 @@ class Board {
 
   isEmptyPos(pos) {
     if (!Board.isValidPos(pos)) {
-      debugger
-      throw new MoveError('Is not valid position!');
+      debugger;
+      throw new MoveError("Is not valid position!");
     }
-    debugger
-    return (this.grid[pos[0]][pos[1]] === null);
+    debugger;
+    return this.grid[pos[0]][pos[1]] === null;
   }
 
   isOver() {
@@ -31,86 +31,118 @@ class Board {
   }
 
   placeMark(pos, mark) {
-    debugger
+    debugger;
     if (!this.isEmptyPos(pos)) {
-
-      debugger
-
-      throw new MoveError('Is not an empty position!');
+      throw new MoveError("Is not an empty position!");
     }
+
     this.grid[pos[0]][pos[1]] = mark;
   }
 
-  print() {
-    const strs = [];
-    for (let rowIdx = 0; rowIdx < 3; rowIdx++) {
-      const marks = [];
-      for (let colIdx = 0; colIdx < 3; colIdx++) {
-        marks.push(
-          this.grid[rowIdx][colIdx] ? this.grid[rowIdx][colIdx] : " "
-        );
-      }
-      strs.push(`${marks.join('|')}\n`);
-    }
-
-    console.log(strs.join('-----\n'));
+  winner() {
+    return this.verticalWin() ||
+    this.horizontalWin() ||
+    this.leftDiagonalWin() ||
+    this.rightDiagonalWin();
   }
 
-  winner() {
-    const posSeqs = [
-      // horizontals
-      [[0, 0], [0, 1], [0, 2]],
-      [[1, 0], [1, 1], [1, 2]],
-      [[2, 0], [2, 1], [2, 2]],
-      // verticals
-      [[0, 0], [1, 0], [2, 0]],
-      [[0, 1], [1, 1], [2, 1]],
-      [[0, 2], [1, 2], [2, 2]],
-      // diagonals
-      [[0, 0], [1, 1], [2, 2]],
-      [[2, 0], [1, 1], [0, 2]]
-    ];
-
-    for (let i = 0; i < posSeqs.length; i++) {
-      const winner = this.winnerHelper(posSeqs[i]);
-      if (winner !== null) {
-        return winner;
+  leftDiagonalWin() {
+    for (var col = 0; col < this.grid.length - 3; col++) {
+      for (var row = 0; row < this.grid[0].length - 3; row++) {
+        let posX = col;
+        let posY = row;
+        let marks = [];
+        while (
+          this.grid[posX][posY] === this.grid[posX + 1][posY + 1] &&
+          Board.marks.includes(this.grid[posX][posY])
+        ) {
+          debugger;
+          marks.push([posX, posY]);
+          if (marks.length === 3) {
+            return true;
+          }
+          if (posX + 1 < this.grid.length && posY + 1 < this.grid[0].length) {
+            posY += 1;
+            posX += 1;
+          }
+        }
       }
     }
-
     return null;
   }
 
+  rightDiagonalWin() {
+    for (var col = 0; col < this.grid.length; col++) {
+      for (var row = 3; row < this.grid[0].length; row++) {
 
-// until out of bounds do {
-//   if (pos) {
-//
-//   }
-// }
-//
-// const posSeqs = [
-//   // horizontals
-//   [[0, 0], [0, 1], [0, 2], [0, 3]],
-//   // verticals
-//   [[0, 0], [1, 0], [2, 0], [3, 0]],
-//   // diagonals
-//   [[0, 0], [1, 1], [2, 2], [3, 3]],
-//   [[3, 0], [2, 1], [1, 2], [0, 3]]
-// ];
-//
-// for (var i = 0; i < array.length; i++) {
-//   array[i]
-// }
-//
-//
-//
-//   if (board[pos[0]][pos[1]] == board[pos[0] + 1][pos[1] + 1]) {
-//
-//   } else if (board[pos[0]][pos[1]] == board[pos[0] + 1][pos[1]]) {
-//
-//   } else if (board[pos[0]][pos[1]] == board[pos[0] + 1][pos[1]]) {
-//
-//   }
+        let posX = col;
+        let posY = row;
+        let marks = [];
+
+        while (
+          this.grid[posX][posY] === this.grid[posX + 1][posY - 1] &&
+          Board.marks.includes(this.grid[posX][posY])
+        ) {
+          debugger;
+          marks.push([posX, posY]);
+          if (marks.length === 3) {
+            return true;
+          }
+          if (posX + 1 < this.grid.length && posY -1 > 0) {
+            posY -= 1;
+            posX += 1;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  horizontalWin() {
+    for (var col = 0; col < this.grid.length; col++) {
+      for (var row = 0; row < this.grid[0].length - 3; row++) {
+        let posX = col;
+        let posY = row;
+        let marks = [];
+        while (
+          this.grid[posX][posY] === this.grid[posX][posY + 1] &&
+          Board.marks.includes(this.grid[posX][posY])
+        ) {
+          marks.push([posX, posY]);
+          if (marks.length === 3) {
+            return true;
+          }
+          if (posY + 1 < this.grid[0].length) {
+            posY += 1;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  verticalWin() {
+    for (var col = 0; col < this.grid.length - 3; col++) {
+      for (var row = 0; row < this.grid[0].length; row++) {
+        let posX = col;
+        let posY = row;
+        let marks = [];
+        while (
+          this.grid[posX][posY] === this.grid[posX + 1][posY] &&
+          Board.marks.includes(this.grid[posX][posY])
+        ) {
+          marks.push([posX, posY]);
+          if (marks.length === 3) {
+            return true;
+          }
+          if (posX + 1 < this.grid[0].length) {
+            posX += 1;
+          }
+        }
+      }
+    }
+    return null;
+  }
 
   winnerHelper(posSeq) {
     for (let markIdx = 0; markIdx < Board.marks.length; markIdx++) {
@@ -134,12 +166,7 @@ class Board {
   }
 
   static isValidPos(pos) {
-    debugger
-
-    return (0 <= pos[0]) &&
-    (pos[0] < 6) &&
-    (0 <= pos[1]) &&
-    (pos[1] < 7);
+    return 0 <= pos[0] && pos[0] < 6 && 0 <= pos[1] && pos[1] < 7;
   }
 
   static makeGrid() {
@@ -156,6 +183,6 @@ class Board {
   }
 }
 
-Board.marks = ['x', 'o'];
+Board.marks = ["x", "o"];
 
 module.exports = Board;
