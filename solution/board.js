@@ -59,6 +59,8 @@ class Board {
           debugger;
           marks.push([posX, posY]);
           if (marks.length === 3) {
+            marks.push([posX + 1, posY + 1]);
+            this.fourMarks = marks;
             return true;
           }
           if (posX + 1 < this.grid.length && posY + 1 < this.grid[0].length) {
@@ -86,6 +88,8 @@ class Board {
           debugger;
           marks.push([posX, posY]);
           if (marks.length === 3) {
+            marks.push([posX + 1, posY - 1]);
+            this.fourMarks = marks;
             return true;
           }
           if (posX + 1 < this.grid.length && posY -1 > 0) {
@@ -110,6 +114,8 @@ class Board {
         ) {
           marks.push([posX, posY]);
           if (marks.length === 3) {
+            marks.push([posX, posY + 1]);
+            this.fourMarks = marks;
             return true;
           }
           if (posY + 1 < this.grid[0].length) {
@@ -133,6 +139,9 @@ class Board {
         ) {
           marks.push([posX, posY]);
           if (marks.length === 3) {
+            marks.push([posX + 1, posY]);
+
+            this.fourMarks = marks;
             return true;
           }
           if (posX + 1 < this.grid[0].length) {

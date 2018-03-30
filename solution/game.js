@@ -32,6 +32,7 @@ class Game {
     console.log(this.board);
     debugger
 
+
     return [posX, pos[1]];
 
   }
