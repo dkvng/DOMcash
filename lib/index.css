@@ -1,10 +1,11 @@
 .square {
-  height: 90px;
-  width: 90px;
-  border: 5px solid #4183D7;
-  float:left;
+  height: 70px;
+  width: 70px;
+  border: 5px solid #446CB3;
+  float: left;
   list-style: none;
-  background-color: white;
+  background-color: #59ABE3;
+  border-radius: 91px;
 }
 
 .clear {
@@ -12,30 +13,52 @@
 }
 
 ul {
-  width: 700px;
-  height: 600px;
-  border: 5px solid black;
+  width: 560px;
+  height: 480px;
+  border: 5px solid #446CB3;
   padding: 0;
+  background-color: #446CB3;
+  border-radius: 20px;
 }
 
 .square:hover {
   background-color: white;
+}
 
+.square:hover {
+  width: 70px;
+  height: 70px;
+}
+
+.p2 {
+  background-color: #F7CA18;
+  width: 102%;
+  height: 102%;
+  border-radius: 100%;
+}
+
+.p1 {
+  background-color: #F03434;
+  width: 102%;
+  height: 102%;
+  border-radius: 100%;
 }
 
 body {
+  color: white;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-
+  font-family: 'Hind', sans-serif;
+  background-color: #59ABE3;
 }
 
 h1 {
   font-size: 50px;
   margin: 20px 0 0 0;
-  font-family: sans-serif;
+  font-weight: 400;
 }
 
 li {
