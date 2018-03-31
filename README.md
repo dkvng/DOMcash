@@ -1,7 +1,7 @@
 # DOMcash
 ### a lightweight DOM manipulation library
 
-Here is a Connect Four demo of DOMcash I made:
+Here is a Connect Four demo of DOMcash I made: http://dkang.me/DOMcash/
 
 ## Documentation
 Easy to use functionality includes the ability to toggle classes, edit HTML content and elements, find child/parent elements, handle events, & make AJAX requests.
