@@ -7,10 +7,8 @@ class Board {
 
   isEmptyPos(pos) {
     if (!Board.isValidPos(pos)) {
-      debugger;
       throw new MoveError("Is not valid position!");
     }
-    debugger;
     return this.grid[pos[0]][pos[1]] === null;
   }
 
@@ -31,7 +29,6 @@ class Board {
   }
 
   placeMark(pos, mark) {
-    debugger;
     if (!this.isEmptyPos(pos)) {
       throw new MoveError("Is not an empty position!");
     }
@@ -56,7 +53,6 @@ class Board {
           this.grid[posX][posY] === this.grid[posX + 1][posY + 1] &&
           Board.marks.includes(this.grid[posX][posY])
         ) {
-          debugger;
           marks.push([posX, posY]);
           if (marks.length === 3) {
             marks.push([posX + 1, posY + 1]);
@@ -85,7 +81,6 @@ class Board {
           this.grid[posX][posY] === this.grid[posX + 1][posY - 1] &&
           Board.marks.includes(this.grid[posX][posY])
         ) {
-          debugger;
           marks.push([posX, posY]);
           if (marks.length === 3) {
             marks.push([posX + 1, posY - 1]);
