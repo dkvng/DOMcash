@@ -24,6 +24,11 @@ class Game {
       console.log('drop more!');
     }
 
+    while (posX > 0 && this.board.grid[posX][[pos[1]]] !== null) {
+      debugger
+      posX -= 1;
+    }
+
     console.log('dropped');
 
     this.board.placeMark([posX, pos[1]], this.currentPlayer);

@@ -74,7 +74,7 @@ class Board {
   }
 
   rightDiagonalWin() {
-    for (var col = 0; col < this.grid.length; col++) {
+    for (var col = 0; col < this.grid.length - 3; col++) {
       for (var row = 3; row < this.grid[0].length; row++) {
 
         let posX = col;
