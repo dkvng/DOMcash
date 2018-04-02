@@ -18,20 +18,14 @@ class Game {
       if (this.board.grid[posX + 1][pos[1]] === null) {
         posX += 1;
       }
-      console.log("drop more!");
     }
 
     while (posX > 0 && this.board.grid[posX][[pos[1]]] !== null) {
       posX -= 1;
     }
 
-    console.log("dropped");
-
     this.board.placeMark([posX, pos[1]], this.currentPlayer);
     this.swapTurn();
-    console.log(this.currentPlayer);
-    console.log(this.board);
-
     return [posX, pos[1]];
   }
 
