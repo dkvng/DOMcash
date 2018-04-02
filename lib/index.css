@@ -34,18 +34,18 @@ ul {
 .square > article {
   width: 70px;
   height: 70px;
-  background-color: transparent;
+  /* background-color: transparent; */
   position: absolute;
   z-index: 999;
   border-radius: 100%;
-  /* display: none; */
+  display: none;
   top: -80px;
 }
 
 .square:hover article {
   display: flex;
   z-index: 999;
-  background-color: rgba(255, 255, 255, .5);
+  /* background-color: rgba(255, 255, 255, .5); */
 }
 
 .no-hover:hover article {
@@ -53,11 +53,11 @@ ul {
 }
 
 .red {
-  background-color: #F7CA18;
+  background-color: rgba(247, 202, 24, .5);
 }
 
 .yellow {
-  background-color: #F03434;
+  background-color: rgba(240, 52, 52, .5);
 }
 
 .p1 {

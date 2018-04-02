@@ -37,10 +37,12 @@ class Board {
   }
 
   winner() {
-    return this.verticalWin() ||
-    this.horizontalWin() ||
-    this.leftDiagonalWin() ||
-    this.rightDiagonalWin();
+    return (
+      this.verticalWin() ||
+      this.horizontalWin() ||
+      this.leftDiagonalWin() ||
+      this.rightDiagonalWin()
+    );
   }
 
   leftDiagonalWin() {
@@ -72,7 +74,6 @@ class Board {
   rightDiagonalWin() {
     for (var col = 0; col < this.grid.length - 3; col++) {
       for (var row = 3; row < this.grid[0].length; row++) {
-
         let posX = col;
         let posY = row;
         let marks = [];
@@ -87,7 +88,7 @@ class Board {
             this.fourMarks = marks;
             return true;
           }
-          if (posX + 1 < this.grid.length && posY -1 > 0) {
+          if (posX + 1 < this.grid.length && posY - 1 > 0) {
             posY -= 1;
             posX += 1;
           }
@@ -145,27 +146,6 @@ class Board {
         }
       }
     }
-    return null;
-  }
-
-  winnerHelper(posSeq) {
-    for (let markIdx = 0; markIdx < Board.marks.length; markIdx++) {
-      const targetMark = Board.marks[markIdx];
-      let winner = true;
-      for (let posIdx = 0; posIdx < 3; posIdx++) {
-        const pos = posSeq[posIdx];
-        const mark = this.grid[pos[0]][pos[1]];
-
-        if (mark != targetMark) {
-          winner = false;
-        }
-      }
-
-      if (winner) {
-        return targetMark;
-      }
-    }
-
     return null;
   }
 
