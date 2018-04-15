@@ -2,7 +2,7 @@
 ###### a lightweight DOM manipulation library
 
 Here is a Connect Four demo of DOMcash I made that employs simple & clean flat UI design: http://dkang.me/DOMcash/
-![Connect Four](https://s3.amazonaws.com/balmybnb-dev/connect-four.png)
+![Connect Four Demo](https://s3.amazonaws.com/balmybnb-dev/connect-four.png)
 
 ## Documentation
 Easy to use functionality includes the ability to toggle classes, edit HTML content and elements, find child/parent elements, handle events, & make AJAX requests.
